@@ -1,0 +1,31 @@
+﻿<Window x:Class="Cleaning_company_ArapovDaniil.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cleaning_company_ArapovDaniil"
+        mc:Ignorable="d"
+        Title="Компания очистки" Height="600" Width="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Frame Name="FrmMainWindow"  Height="450" VerticalAlignment="Center" Grid.Row="1" Margin="100,0,100,0" NavigationUIVisibility="Hidden">
+            <UIElement.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </UIElement.RenderTransform>
+        </Frame>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="-59,-16,-59,10">
+            <Image Margin="85,21,952,9" Source="C:\Users\Admin Danek\Downloads\znachok.jpg"/>
+        </Border>
+        <TextBlock Text="Клининговая компания" Margin="100,14,516,27" FontSize="30" FontFamily="Comic Sans MS"/>
+        <Label x:Name="label_FIO" FontSize="14" Width="Auto" Content="" HorizontalAlignment="Left" Margin="384,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.628,-0.034"/>
+    </Grid>
+</Window>

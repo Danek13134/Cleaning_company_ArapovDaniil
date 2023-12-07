@@ -1,0 +1,30 @@
+﻿<Page x:Class="Cleaning_company_ArapovDaniil.Pages.Input"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Cleaning_company_ArapovDaniil.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Input">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Авторизация" VerticalAlignment="Top" FontSize="30" RenderTransformOrigin="0.511,0.125" Margin="0,80,0,0" FontFamily="Comic Sans MS"/>
+        <TextBlock HorizontalAlignment="Left" Margin="4,147,0,0" TextWrapping="Wrap" Text="Логин" VerticalAlignment="Top" FontSize="20" Grid.RowSpan="2" Grid.Column="1" Width="72" FontFamily="Comic Sans MS"/>
+        <TextBox x:Name="Login" VerticalContentAlignment="Center" HorizontalAlignment="Center" Height="24" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260" Margin="0,30,0,0" Grid.Column="1" AcceptsTab="True" AcceptsReturn="True" Background="#FFFFCC99" FontFamily="Comic Sans MS"/>
+        <TextBlock HorizontalAlignment="Left" Margin="4,53,0,0" TextWrapping="Wrap" Text="Пароль" VerticalAlignment="Top" FontSize="20" Grid.Row="1" Grid.Column="1" Width="101" FontFamily="Comic Sans MS"/>
+        <PasswordBox x:Name="Password" VerticalContentAlignment="Center" HorizontalAlignment="Center" Height="24" Grid.Row="1" VerticalAlignment="Top" Width="260" Margin="0,82,0,0" Grid.Column="1" Background="#FFFFCC99" FontFamily="Comic Sans MS"/>
+        <Button Background="#FFCC6600" x:Name="Vxod" Click="Vxod_Click"  Content="Войти" FontSize="20" VerticalContentAlignment="Center" Margin="3,120,3,137" Grid.Row="1" Height="43" Grid.Column="1" Grid.RowSpan="2" TextBlock.FontFamily="Comic Sans MS"/>
+        <Button Background="#FFCC6600" x:Name="Vxod_Client" Click="Vxod_Client_Click"  Content="Войти как клиент" FontSize="20" VerticalContentAlignment="Center" Margin="2,18,3,89" Grid.Row="2" Height="43" Grid.Column="1" TextBlock.FontFamily="Comic Sans MS"/>
+    </Grid>
+</Page>

@@ -1,0 +1,955 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище PP.PM01_1Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bucket">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PackageID" Type="int" Nullable="false" />
+          <Property Name="TakeID" Type="int" />
+        </EntityType>
+        <EntityType Name="ClearingAgent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Description" Type="nchar" MaxLength="10" />
+          <Property Name="Price" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="TypeClearingAgentID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client_C">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FIO" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="Phone" Type="nchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="nchar" MaxLength="10" />
+          <Property Name="PackageID" Type="int" Nullable="false" />
+          <Property Name="StatusID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="ClientID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Package">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+          <Property Name="TypePackageID" Type="int" Nullable="false" />
+          <Property Name="isActual" Type="nvarchar" MaxLength="3" />
+          <Property Name="ImageName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImagePath" Type="image" />
+          <Property Name="Cost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Count_in_stock" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PackageCommit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PackageID" Type="int" Nullable="false" />
+          <Property Name="Text" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="CreationDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nchar" MaxLength="1000" />
+          <Property Name="TypeServiceID" Type="int" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="PackageID" Type="int" Nullable="false" />
+          <Property Name="ImageName" Type="nchar" MaxLength="100" />
+          <Property Name="ImagePath" Type="image" />
+        </EntityType>
+        <EntityType Name="ServiseImage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceID" Type="int" Nullable="false" />
+          <Property Name="ImageSource" Type="image" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TypeClearingAgent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Description" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="TypePackage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="TypeService">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NameRole" Type="int" Nullable="false" />
+          <Property Name="FIO" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Bucket_Package">
+          <End Role="Package" Type="Self.Package" Multiplicity="1" />
+          <End Role="Bucket" Type="Self.Bucket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Package">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Bucket">
+              <PropertyRef Name="PackageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClearingAgent_TypeClearingAgent">
+          <End Role="TypeClearingAgent" Type="Self.TypeClearingAgent" Multiplicity="1" />
+          <End Role="ClearingAgent" Type="Self.ClearingAgent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeClearingAgent">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClearingAgent">
+              <PropertyRef Name="TypeClearingAgentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Client">
+          <End Role="Client_C" Type="Self.Client_C" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client_C">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Package">
+          <End Role="Package" Type="Self.Package" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Package">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="PackageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Package_TypePackage">
+          <End Role="TypePackage" Type="Self.TypePackage" Multiplicity="1" />
+          <End Role="Package" Type="Self.Package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypePackage">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Package">
+              <PropertyRef Name="TypePackageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackageCommit_Client">
+          <End Role="Client_C" Type="Self.Client_C" Multiplicity="1" />
+          <End Role="PackageCommit" Type="Self.PackageCommit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client_C">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PackageCommit">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackageCommit_Package">
+          <End Role="Package" Type="Self.Package" Multiplicity="1" />
+          <End Role="PackageCommit" Type="Self.PackageCommit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Package">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PackageCommit">
+              <PropertyRef Name="PackageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Service_Package">
+          <End Role="Package" Type="Self.Package" Multiplicity="1" />
+          <End Role="Service" Type="Self.Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Package">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="PackageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Service_TypeService">
+          <End Role="TypeService" Type="Self.TypeService" Multiplicity="1" />
+          <End Role="Service" Type="Self.Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeService">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="TypeServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiseImage_Service">
+          <End Role="Service" Type="Self.Service" Multiplicity="1" />
+          <End Role="ServiseImage" Type="Self.ServiseImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ServiseImage">
+              <PropertyRef Name="ServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="NameRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище PPPM01_1ModelContainer">
+          <EntitySet Name="Bucket" EntityType="Self.Bucket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClearingAgent" EntityType="Self.ClearingAgent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client_C" EntityType="Self.Client_C" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Package" EntityType="Self.Package" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PackageCommit" EntityType="Self.PackageCommit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiseImage" EntityType="Self.ServiseImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeClearingAgent" EntityType="Self.TypeClearingAgent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypePackage" EntityType="Self.TypePackage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeService" EntityType="Self.TypeService" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Bucket_Package" Association="Self.FK_Bucket_Package">
+            <End Role="Package" EntitySet="Package" />
+            <End Role="Bucket" EntitySet="Bucket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClearingAgent_TypeClearingAgent" Association="Self.FK_ClearingAgent_TypeClearingAgent">
+            <End Role="TypeClearingAgent" EntitySet="TypeClearingAgent" />
+            <End Role="ClearingAgent" EntitySet="ClearingAgent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Client" Association="Self.FK_Order_Client">
+            <End Role="Client_C" EntitySet="Client_C" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Package" Association="Self.FK_Order_Package">
+            <End Role="Package" EntitySet="Package" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Status" Association="Self.FK_Order_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_User" Association="Self.FK_Order_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Package_TypePackage" Association="Self.FK_Package_TypePackage">
+            <End Role="TypePackage" EntitySet="TypePackage" />
+            <End Role="Package" EntitySet="Package" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackageCommit_Client" Association="Self.FK_PackageCommit_Client">
+            <End Role="Client_C" EntitySet="Client_C" />
+            <End Role="PackageCommit" EntitySet="PackageCommit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackageCommit_Package" Association="Self.FK_PackageCommit_Package">
+            <End Role="Package" EntitySet="Package" />
+            <End Role="PackageCommit" EntitySet="PackageCommit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Service_Package" Association="Self.FK_Service_Package">
+            <End Role="Package" EntitySet="Package" />
+            <End Role="Service" EntitySet="Service" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Service_TypeService" Association="Self.FK_Service_TypeService">
+            <End Role="TypeService" EntitySet="TypeService" />
+            <End Role="Service" EntitySet="Service" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiseImage_Service" Association="Self.FK_ServiseImage_Service">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="ServiseImage" EntitySet="ServiseImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PP.PM01_1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="EntitiesADV" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bucket" EntityType="PP.PM01_1Model.Bucket" />
+          <EntitySet Name="ClearingAgent" EntityType="PP.PM01_1Model.ClearingAgent" />
+          <EntitySet Name="Client_C" EntityType="PP.PM01_1Model.Client_C" />
+          <EntitySet Name="Order" EntityType="PP.PM01_1Model.Order" />
+          <EntitySet Name="Package" EntityType="PP.PM01_1Model.Package" />
+          <EntitySet Name="PackageCommit" EntityType="PP.PM01_1Model.PackageCommit" />
+          <EntitySet Name="Role" EntityType="PP.PM01_1Model.Role" />
+          <EntitySet Name="Service" EntityType="PP.PM01_1Model.Service" />
+          <EntitySet Name="ServiseImage" EntityType="PP.PM01_1Model.ServiseImage" />
+          <EntitySet Name="Status" EntityType="PP.PM01_1Model.Status" />
+          <EntitySet Name="sysdiagrams" EntityType="PP.PM01_1Model.sysdiagrams" />
+          <EntitySet Name="TypeClearingAgent" EntityType="PP.PM01_1Model.TypeClearingAgent" />
+          <EntitySet Name="TypePackage" EntityType="PP.PM01_1Model.TypePackage" />
+          <EntitySet Name="TypeService" EntityType="PP.PM01_1Model.TypeService" />
+          <EntitySet Name="User" EntityType="PP.PM01_1Model.User" />
+          <AssociationSet Name="FK_Bucket_Package" Association="PP.PM01_1Model.FK_Bucket_Package">
+            <End Role="Package" EntitySet="Package" />
+            <End Role="Bucket" EntitySet="Bucket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClearingAgent_TypeClearingAgent" Association="PP.PM01_1Model.FK_ClearingAgent_TypeClearingAgent">
+            <End Role="TypeClearingAgent" EntitySet="TypeClearingAgent" />
+            <End Role="ClearingAgent" EntitySet="ClearingAgent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Client" Association="PP.PM01_1Model.FK_Order_Client">
+            <End Role="Client_C" EntitySet="Client_C" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackageCommit_Client" Association="PP.PM01_1Model.FK_PackageCommit_Client">
+            <End Role="Client_C" EntitySet="Client_C" />
+            <End Role="PackageCommit" EntitySet="PackageCommit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Package" Association="PP.PM01_1Model.FK_Order_Package">
+            <End Role="Package" EntitySet="Package" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Status" Association="PP.PM01_1Model.FK_Order_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_User" Association="PP.PM01_1Model.FK_Order_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Package_TypePackage" Association="PP.PM01_1Model.FK_Package_TypePackage">
+            <End Role="TypePackage" EntitySet="TypePackage" />
+            <End Role="Package" EntitySet="Package" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackageCommit_Package" Association="PP.PM01_1Model.FK_PackageCommit_Package">
+            <End Role="Package" EntitySet="Package" />
+            <End Role="PackageCommit" EntitySet="PackageCommit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Service_Package" Association="PP.PM01_1Model.FK_Service_Package">
+            <End Role="Package" EntitySet="Package" />
+            <End Role="Service" EntitySet="Service" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="PP.PM01_1Model.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Service_TypeService" Association="PP.PM01_1Model.FK_Service_TypeService">
+            <End Role="TypeService" EntitySet="TypeService" />
+            <End Role="Service" EntitySet="Service" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiseImage_Service" Association="PP.PM01_1Model.FK_ServiseImage_Service">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="ServiseImage" EntitySet="ServiseImage" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Bucket">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackageID" Type="Int32" Nullable="false" />
+          <Property Name="TakeID" Type="Int32" />
+          <NavigationProperty Name="Package" Relationship="PP.PM01_1Model.FK_Bucket_Package" FromRole="Bucket" ToRole="Package" />
+        </EntityType>
+        <EntityType Name="ClearingAgent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Price" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="TypeClearingAgentID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TypeClearingAgent" Relationship="PP.PM01_1Model.FK_ClearingAgent_TypeClearingAgent" FromRole="ClearingAgent" ToRole="TypeClearingAgent" />
+        </EntityType>
+        <EntityType Name="Client_C">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FIO" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Order" Relationship="PP.PM01_1Model.FK_Order_Client" FromRole="Client_C" ToRole="Order" />
+          <NavigationProperty Name="PackageCommit" Relationship="PP.PM01_1Model.FK_PackageCommit_Client" FromRole="Client_C" ToRole="PackageCommit" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="PackageID" Type="Int32" Nullable="false" />
+          <Property Name="StatusID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="ClientID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Client_C" Relationship="PP.PM01_1Model.FK_Order_Client" FromRole="Order" ToRole="Client_C" />
+          <NavigationProperty Name="Package" Relationship="PP.PM01_1Model.FK_Order_Package" FromRole="Order" ToRole="Package" />
+          <NavigationProperty Name="Status" Relationship="PP.PM01_1Model.FK_Order_Status" FromRole="Order" ToRole="Status" />
+          <NavigationProperty Name="User" Relationship="PP.PM01_1Model.FK_Order_User" FromRole="Order" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Package">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="TypePackageID" Type="Int32" Nullable="false" />
+          <Property Name="isActual" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="ImageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImagePath" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Cost" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Count_in_stock" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bucket" Relationship="PP.PM01_1Model.FK_Bucket_Package" FromRole="Package" ToRole="Bucket" />
+          <NavigationProperty Name="Order" Relationship="PP.PM01_1Model.FK_Order_Package" FromRole="Package" ToRole="Order" />
+          <NavigationProperty Name="TypePackage" Relationship="PP.PM01_1Model.FK_Package_TypePackage" FromRole="Package" ToRole="TypePackage" />
+          <NavigationProperty Name="PackageCommit" Relationship="PP.PM01_1Model.FK_PackageCommit_Package" FromRole="Package" ToRole="PackageCommit" />
+          <NavigationProperty Name="Service" Relationship="PP.PM01_1Model.FK_Service_Package" FromRole="Package" ToRole="Service" />
+        </EntityType>
+        <EntityType Name="PackageCommit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackageID" Type="Int32" Nullable="false" />
+          <Property Name="Text" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="ClientID" Type="Int32" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Client_C" Relationship="PP.PM01_1Model.FK_PackageCommit_Client" FromRole="PackageCommit" ToRole="Client_C" />
+          <NavigationProperty Name="Package" Relationship="PP.PM01_1Model.FK_PackageCommit_Package" FromRole="PackageCommit" ToRole="Package" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="PP.PM01_1Model.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" />
+          <Property Name="TypeServiceID" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="PackageID" Type="Int32" Nullable="false" />
+          <Property Name="ImageName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="ImagePath" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Package" Relationship="PP.PM01_1Model.FK_Service_Package" FromRole="Service" ToRole="Package" />
+          <NavigationProperty Name="TypeService" Relationship="PP.PM01_1Model.FK_Service_TypeService" FromRole="Service" ToRole="TypeService" />
+          <NavigationProperty Name="ServiseImage" Relationship="PP.PM01_1Model.FK_ServiseImage_Service" FromRole="Service" ToRole="ServiseImage" />
+        </EntityType>
+        <EntityType Name="ServiseImage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceID" Type="Int32" Nullable="false" />
+          <Property Name="ImageSource" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Service" Relationship="PP.PM01_1Model.FK_ServiseImage_Service" FromRole="ServiseImage" ToRole="Service" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Order" Relationship="PP.PM01_1Model.FK_Order_Status" FromRole="Status" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TypeClearingAgent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="ClearingAgent" Relationship="PP.PM01_1Model.FK_ClearingAgent_TypeClearingAgent" FromRole="TypeClearingAgent" ToRole="ClearingAgent" />
+        </EntityType>
+        <EntityType Name="TypePackage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Package" Relationship="PP.PM01_1Model.FK_Package_TypePackage" FromRole="TypePackage" ToRole="Package" />
+        </EntityType>
+        <EntityType Name="TypeService">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Service" Relationship="PP.PM01_1Model.FK_Service_TypeService" FromRole="TypeService" ToRole="Service" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NameRole" Type="Int32" Nullable="false" />
+          <Property Name="FIO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Order" Relationship="PP.PM01_1Model.FK_Order_User" FromRole="User" ToRole="Order" />
+          <NavigationProperty Name="Role" Relationship="PP.PM01_1Model.FK_User_Role" FromRole="User" ToRole="Role" />
+        </EntityType>
+        <Association Name="FK_Bucket_Package">
+          <End Type="PP.PM01_1Model.Package" Role="Package" Multiplicity="1" />
+          <End Type="PP.PM01_1Model.Bucket" Role="Bucket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Package">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Bucket">
+              <PropertyRef Name="PackageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClearingAgent_TypeClearingAgent">
+          <End Type="PP.PM01_1Model.TypeClearingAgent" Role="TypeClearingAgent" Multiplicity="1" />
+          <End Type="PP.PM01_1Model.ClearingAgent" Role="ClearingAgent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeClearingAgent">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClearingAgent">
+              <PropertyRef Name="TypeClearingAgentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Client">
+          <End Type="PP.PM01_1Model.Client_C" Role="Client_C" Multiplicity="1" />
+          <End Type="PP.PM01_1Model.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client_C">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackageCommit_Client">
+          <End Type="PP.PM01_1Model.Client_C" Role="Client_C" Multiplicity="1" />
+          <End Type="PP.PM01_1Model.PackageCommit" Role="PackageCommit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client_C">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PackageCommit">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Package">
+          <End Type="PP.PM01_1Model.Package" Role="Package" Multiplicity="1" />
+          <End Type="PP.PM01_1Model.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Package">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="PackageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Status">
+          <End Type="PP.PM01_1Model.Status" Role="Status" Multiplicity="1" />
+          <End Type="PP.PM01_1Model.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_User">
+          <End Type="PP.PM01_1Model.User" Role="User" Multiplicity="1" />
+          <End Type="PP.PM01_1Model.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Package_TypePackage">
+          <End Type="PP.PM01_1Model.TypePackage" Role="TypePackage" Multiplicity="1" />
+          <End Type="PP.PM01_1Model.Package" Role="Package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypePackage">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Package">
+              <PropertyRef Name="TypePackageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackageCommit_Package">
+          <End Type="PP.PM01_1Model.Package" Role="Package" Multiplicity="1" />
+          <End Type="PP.PM01_1Model.PackageCommit" Role="PackageCommit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Package">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PackageCommit">
+              <PropertyRef Name="PackageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Service_Package">
+          <End Type="PP.PM01_1Model.Package" Role="Package" Multiplicity="1" />
+          <End Type="PP.PM01_1Model.Service" Role="Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Package">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="PackageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Type="PP.PM01_1Model.Role" Role="Role" Multiplicity="1" />
+          <End Type="PP.PM01_1Model.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="NameRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Service_TypeService">
+          <End Type="PP.PM01_1Model.TypeService" Role="TypeService" Multiplicity="1" />
+          <End Type="PP.PM01_1Model.Service" Role="Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeService">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="TypeServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiseImage_Service">
+          <End Type="PP.PM01_1Model.Service" Role="Service" Multiplicity="1" />
+          <End Type="PP.PM01_1Model.ServiseImage" Role="ServiseImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ServiseImage">
+              <PropertyRef Name="ServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище PPPM01_1ModelContainer" CdmEntityContainer="EntitiesADV">
+          <EntitySetMapping Name="Bucket">
+            <EntityTypeMapping TypeName="PP.PM01_1Model.Bucket">
+              <MappingFragment StoreEntitySet="Bucket">
+                <ScalarProperty Name="TakeID" ColumnName="TakeID" />
+                <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClearingAgent">
+            <EntityTypeMapping TypeName="PP.PM01_1Model.ClearingAgent">
+              <MappingFragment StoreEntitySet="ClearingAgent">
+                <ScalarProperty Name="TypeClearingAgentID" ColumnName="TypeClearingAgentID" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client_C">
+            <EntityTypeMapping TypeName="PP.PM01_1Model.Client_C">
+              <MappingFragment StoreEntitySet="Client_C">
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order">
+            <EntityTypeMapping TypeName="PP.PM01_1Model.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Package">
+            <EntityTypeMapping TypeName="PP.PM01_1Model.Package">
+              <MappingFragment StoreEntitySet="Package">
+                <ScalarProperty Name="Count_in_stock" ColumnName="Count_in_stock" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="isActual" ColumnName="isActual" />
+                <ScalarProperty Name="TypePackageID" ColumnName="TypePackageID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PackageCommit">
+            <EntityTypeMapping TypeName="PP.PM01_1Model.PackageCommit">
+              <MappingFragment StoreEntitySet="PackageCommit">
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="PP.PM01_1Model.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Service">
+            <EntityTypeMapping TypeName="PP.PM01_1Model.Service">
+              <MappingFragment StoreEntitySet="Service">
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="TypeServiceID" ColumnName="TypeServiceID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiseImage">
+            <EntityTypeMapping TypeName="PP.PM01_1Model.ServiseImage">
+              <MappingFragment StoreEntitySet="ServiseImage">
+                <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+                <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="PP.PM01_1Model.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="PP.PM01_1Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeClearingAgent">
+            <EntityTypeMapping TypeName="PP.PM01_1Model.TypeClearingAgent">
+              <MappingFragment StoreEntitySet="TypeClearingAgent">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypePackage">
+            <EntityTypeMapping TypeName="PP.PM01_1Model.TypePackage">
+              <MappingFragment StoreEntitySet="TypePackage">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeService">
+            <EntityTypeMapping TypeName="PP.PM01_1Model.TypeService">
+              <MappingFragment StoreEntitySet="TypeService">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="PP.PM01_1Model.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="NameRole" ColumnName="NameRole" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

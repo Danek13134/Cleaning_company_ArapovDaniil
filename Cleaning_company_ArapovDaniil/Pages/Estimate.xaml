@@ -1,0 +1,87 @@
+﻿<Page x:Class="Cleaning_company_ArapovDaniil.Pages.Estimate"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Cleaning_company_ArapovDaniil.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="600"
+      Title="Estimate" Background="White">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <WrapPanel Margin="0,0,0,0" x:Name="ActWrap" Orientation="Vertical" VerticalAlignment="Top"
+               HorizontalAlignment="Center">
+            <WrapPanel Margin="20,10,20,20" Orientation="Horizontal"
+                   HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock
+                x:Name="Title"
+                Text="Чек к токену: "
+                FontSize="18"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"/>
+                <TextBlock x:Name="tbToken"
+                           FontSize="18"/>
+                <TextBlock Text=" от "
+                           FontSize="18"/>
+                <TextBlock x:Name="tbTime"
+                           FontSize="18"/>
+            </WrapPanel>
+
+            <WrapPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <Label Content="Общие сведения" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,20,0,0"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Ваш менеджер: "/>
+                    <TextBlock x:Name="tbManager"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Ваш подрядчик: "/>
+                    <TextBlock x:Name="tbContractor"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Предварительная стоимость: "/>
+                    <TextBlock x:Name="tbCost"/>
+                    <TextBlock Text=" Руб."/>
+                </StackPanel>
+            </WrapPanel>
+            <TextBlock Text="Пакеты:"
+                       FontSize="14"
+                       Padding="20 0"/>
+            <DataGrid Name="dgMaterial"
+                      AutoGenerateColumns="False"
+                      VerticalScrollBarVisibility="Hidden"
+                      Margin="10">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Package.Name}"
+                                        Header="Наименование пакета"
+                                        Width="4*"/>
+                    <DataGridTextColumn Binding="{Binding Package.Count_in_stock}"
+                                        Header="На 1 пакет"
+                                        Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Package.Cost}"
+                                        Header="Цена"
+                                        Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <TextBlock Text="Подрядчик: ______________________"
+                       HorizontalAlignment="Right"
+                       Margin="0 0 10 0"/>
+            <TextBlock Text="подпись"
+                       HorizontalAlignment="Right"
+                       Margin="0 0 45 0"
+                       FontSize="10"/>
+        </WrapPanel>
+
+        <WrapPanel Grid.Row="1" Margin="20, 0, 20, 10">
+            <Button
+            Padding="8"
+            Content="Печать"
+            x:Name="Print"
+            Click="Print_Click"/>
+        </WrapPanel>
+    </Grid>
+</Page>
